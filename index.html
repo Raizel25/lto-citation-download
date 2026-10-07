@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#172c2b">
+	<meta name="description" content="Download the Traffic Citation System Android app.">
+	<title>Traffic Citation System | Android download</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			color-scheme: light;
+			--ink: #102b4e;
+			--paper: #ffffff;
+			--muted: #64748b;
+			--line: #dbe6f2;
+			--accent: #2563eb;
+			--accent-strong: #1d4ed8;
+			--pale-blue: #eaf3ff;
+			--serif: "Manrope", "Avenir Next", sans-serif;
+			--sans: "DM Sans", "Avenir Next", sans-serif;
+		}
+
+		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; }
+		body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
+		a { color: inherit; }
+		a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+
+		.topbar {
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			display: flex;
+			width: 100%;
+			min-height: 84px;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 clamp(24px, 7vw, 104px);
+			color: #fff;
+		}
+		.brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+		.brand-mark {
+			display: grid;
+			width: 35px;
+			height: 35px;
+			place-items: center;
+			border: 1px solid rgba(255,255,255,.5);
+			border-radius: 50%;
+			color: #93c5fd;
+			font-family: var(--serif);
+			font-size: 18px;
+			font-weight: 800;
+		}
+		.brand-name { font-family: var(--serif); font-size: 14px; font-weight: 800; letter-spacing: 1.2px; }
+		.topbar nav { display: flex; align-items: center; gap: clamp(20px, 4vw, 48px); }
+		.topbar nav a { font-size: 13px; text-decoration: none; color: rgba(255,255,255,.83); }
+		.topbar nav a:hover { color: #fff; }
+		.topbar .nav-download { border-bottom: 1px solid #93c5fd; padding: 8px 0; color: #fff; }
+
+		.hero {
+			position: relative;
+			display: flex;
+			min-height: min(760px, 94svh);
+			align-items: center;
+			overflow: hidden;
+			background-color: #102b4e;
+			background-image: url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2200&q=85");
+			background-position: center 54%;
+			background-size: cover;
+			color: #fff;
+		}
+		.hero::before { position: absolute; inset: 0; background: rgba(9, 32, 65, .72); content: ""; }
+		.hero-inner {
+			position: relative;
+			width: min(100% - 48px, 1120px);
+			margin: 50px auto 0;
+			padding: 92px 0 100px;
+			animation: arrive .75s ease-out both;
+		}
+		.eyebrow { display: flex; align-items: center; gap: 11px; margin: 0 0 25px; color: #dbeafe; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+		.eyebrow::before { width: 25px; height: 1px; background: var(--accent); content: ""; }
+		h1 { max-width: 760px; margin: 0; font-family: var(--serif); font-size: clamp(48px, 8vw, 91px); font-weight: 600; letter-spacing: 0; line-height: 1.04; }
+		.hero-copy { max-width: 440px; margin: 23px 0 31px; color: rgba(255,255,255,.8); font-size: 16px; line-height: 1.75; }
+		.download-button {
+			display: inline-flex;
+			min-height: 56px;
+			align-items: center;
+			justify-content: center;
+			gap: 24px;
+			padding: 0 22px;
+			border: 1px solid var(--accent-strong);
+			border-radius: 3px;
+			background: var(--accent-strong);
+			color: #fff;
+			font-size: 14px;
+			font-weight: 700;
+			text-decoration: none;
+			transition: background-color .18s ease, transform .18s ease;
+		}
+		.download-button:hover { transform: translateY(-2px); background: #1e40af; }
+		.download-button span { font-size: 19px; line-height: 1; }
+		.hero-note { margin: 15px 0 0; color: rgba(255,255,255,.7); font-size: 12px; }
+		.scroll-cue { position: absolute; right: clamp(24px, 7vw, 104px); bottom: 37px; color: rgba(255,255,255,.76); font-size: 10px; letter-spacing: 1.4px; text-transform: uppercase; }
+
+		.release { padding: 65px 24px 69px; border-bottom: 1px solid var(--line); }
+		.release-inner { display: grid; width: min(100%, 1120px); grid-template-columns: 1.1fr 2fr; gap: 50px; margin: auto; align-items: start; }
+		.section-label { margin: 0 0 11px; color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
+		.release h2, .install h2, .faq h2 { margin: 0; font-family: var(--serif); font-size: clamp(25px, 3.4vw, 38px); font-weight: 600; letter-spacing: 0; line-height: 1.2; }
+		.release-list { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; }
+		.release-list div { padding: 7px 18px; border-left: 1px solid var(--line); }
+		.release-list dt { margin-bottom: 7px; color: var(--muted); font-size: 12px; }
+		.release-list dd { margin: 0; font-size: 14px; font-weight: 600; }
+
+		.install { padding: 94px 24px 100px; }
+		.install-inner { display: grid; width: min(100%, 1120px); grid-template-columns: 1fr 1.15fr; gap: 85px; margin: auto; }
+		.install-intro p:last-child { max-width: 330px; margin: 17px 0 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
+		.steps { margin: 0; padding: 0; list-style: none; counter-reset: install; }
+		.steps li { display: grid; grid-template-columns: 43px 1fr; gap: 15px; padding: 18px 0; border-bottom: 1px solid var(--line); counter-increment: install; }
+		.steps li:first-child { padding-top: 0; }
+		.steps li::before { content: "0" counter(install); color: var(--accent-strong); font-family: var(--serif); font-size: 14px; font-weight: 700; }
+		.steps strong { display: block; margin-bottom: 5px; font-size: 14px; }
+		.steps span { color: var(--muted); font-size: 13px; line-height: 1.6; }
+
+		.faq { padding: 68px 24px 78px; background: var(--pale-blue); }
+		.faq-inner { display: grid; width: min(100%, 1120px); grid-template-columns: 1fr 1.15fr; gap: 85px; margin: auto; }
+		.faq-list details { border-bottom: 1px solid #cbdcf0; }
+		.faq-list summary { display: flex; min-height: 59px; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; font-size: 14px; font-weight: 600; list-style: none; }
+		.faq-list summary::-webkit-details-marker { display: none; }
+		.faq-list summary::after { content: "+"; color: var(--accent-strong); font-size: 20px; font-weight: 400; }
+		.faq-list details[open] summary::after { content: "-"; }
+		.faq-list details p { max-width: 520px; margin: -2px 24px 18px 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+
+		footer { display: flex; min-height: 90px; align-items: center; justify-content: space-between; gap: 16px; padding: 20px clamp(24px, 7vw, 104px); background: var(--ink); color: rgba(255,255,255,.72); font-size: 12px; }
+		footer a { color: #fff; text-decoration-color: var(--accent); text-underline-offset: 4px; }
+		@keyframes arrive { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+		}
+		@media (max-width: 700px) {
+			.topbar { min-height: 70px; padding: 0 22px; }
+			.topbar nav { gap: 17px; }
+			.topbar nav a { font-size: 12px; }
+			.topbar nav a:not(.nav-download) { display: none; }
+			.brand { gap: 8px; }
+			.brand-name { max-width: 118px; font-size: 11px; line-height: 1.2; }
+			.hero { min-height: 680px; min-height: min(760px, 94svh); background-position: 57% center; }
+			.hero::before { background: rgba(9, 32, 65, .76); }
+			.hero-inner { width: calc(100% - 44px); margin-top: 35px; padding: 75px 0; }
+			h1 { max-width: 540px; font-size: clamp(47px, 11vw, 72px); }
+			.hero-copy { max-width: 360px; font-size: 15px; }
+			.scroll-cue { right: 22px; bottom: 25px; }
+			.release { padding: 52px 22px; }
+			.release-inner { grid-template-columns: 1fr; gap: 28px; }
+			.release-list div { padding-left: 12px; }
+			.release-list div:first-child { padding-left: 0; border-left: 0; }
+			.release-list dt { font-size: 11px; }
+			.release-list dd { font-size: 13px; }
+			.install { padding: 66px 22px 72px; }
+			.install-inner, .faq-inner { grid-template-columns: 1fr; gap: 35px; }
+			.faq { padding: 55px 22px 65px; }
+			footer { padding: 23px 22px; }
+		}
+		@media (max-width: 380px) {
+			.brand { gap: 8px; }
+			.brand-name { font-size: 12px; }
+			.topbar nav { gap: 12px; }
+			.release-list { grid-template-columns: 1fr; gap: 15px; }
+			.release-list div, .release-list div:first-child { padding: 0; border: 0; }
+			footer { align-items: flex-start; flex-direction: column; }
+		}
+	</style>
+</head>
+<body>
+	<header class="topbar">
+		<a class="brand" href="#top" aria-label="Traffic Citation System home">
+			<span class="brand-mark" aria-hidden="true">TCS</span>
+			<span class="brand-name">TRAFFIC CITATION SYSTEM</span>
+		</a>
+		<nav aria-label="Main navigation">
+			<a href="#release">Release</a>
+			<a href="#install">Install guide</a>
+			<a class="nav-download" href="https://github.com/Raizel25/lto-citation-download/releases/download/v1.0.0/LTO_Traffic_Citation_System.apk">Get the APK <span aria-hidden="true">&darr;</span></a>
+		</nav>
+	</header>
+
+	<main>
+		<section class="hero" id="top" aria-labelledby="hero-title">
+			<div class="hero-inner">
+				<p class="eyebrow">Android release</p>
+				<h1 id="hero-title">Traffic Citation<br>System</h1>
+				<p class="hero-copy">Get the Traffic Citation System Android app and install it directly on your device.</p>
+				<a class="download-button" href="https://github.com/Raizel25/lto-citation-download/releases/download/v1.0.0/LTO_Traffic_Citation_System.apk">
+					Download for Android <span aria-hidden="true">&darr;</span>
+				</a>
+				<p class="hero-note">APK file &middot; Android device required</p>
+			</div>
+			<a class="scroll-cue" href="#release">Explore the release &darr;</a>
+		</section>
+
+		<section class="release" id="release" aria-labelledby="release-title">
+			<div class="release-inner">
+				<div>
+					<p class="section-label">The details</p>
+					<h2 id="release-title">The Android release.</h2>
+				</div>
+				<dl class="release-list">
+					<div><dt>Platform</dt><dd>Android</dd></div>
+					<div><dt>File type</dt><dd>APK</dd></div>
+					<div><dt>Download</dt><dd>Direct file</dd></div>
+				</dl>
+			</div>
+		</section>
+
+		<section class="install" id="install" aria-labelledby="install-title">
+			<div class="install-inner">
+				<div class="install-intro">
+					<p class="section-label">Three quick steps</p>
+					<h2 id="install-title">Up and running<br>in a moment.</h2>
+					<p>Install the APK on your Android device. Your phone may ask you to allow installs from your browser.</p>
+				</div>
+				<ol class="steps">
+					<li><div><strong>Download the APK</strong><span>Tap the download button and wait for the file to finish.</span></div></li>
+					<li><div><strong>Open the downloaded file</strong><span>Find it in your browser's downloads or your Files app.</span></div></li>
+					<li><div><strong>Confirm installation</strong><span>If prompted, allow this source, then tap Install.</span></div></li>
+				</ol>
+			</div>
+		</section>
+
+		<section class="faq" aria-labelledby="faq-title">
+			<div class="faq-inner">
+				<div>
+					<p class="section-label">A few answers</p>
+					<h2 id="faq-title">Before you download.</h2>
+				</div>
+				<div class="faq-list">
+					<details>
+						<summary>What is an APK?</summary>
+						<p>An APK is the package file Android uses to install an app. This download is intended for Android devices.</p>
+					</details>
+					<details>
+						<summary>Why is Android asking for permission?</summary>
+						<p>Android may ask you to allow your browser or Files app to install apps. Only continue if you trust the source of the APK.</p>
+					</details>
+					<details>
+						<summary>Having trouble installing?</summary>
+						<p>Check that the download finished, then open the APK from your device's Downloads folder. Your device settings may offer more help if installation is blocked.</p>
+					</details>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<span>&copy; <span id="year">2026</span> Traffic Citation System</span>
+		<a href="#top">Back to top &uarr;</a>
+	</footer>
+</body>
+</html>
